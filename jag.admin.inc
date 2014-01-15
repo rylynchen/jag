@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Form builder; Configure jsg settings.
+ * Form builder; Configure jag settings.
  */
 function jag_settings_form() {
   $form = array();
