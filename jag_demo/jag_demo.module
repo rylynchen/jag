@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ */
+function jag_demo_menu() {
+  $items = array();
+  $items['jag/demo'] = array(
+    'title' => 'Jag Demo',
+    'page callback' => '_jag_demo_page',
+    'access callback' => TRUE,
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function jag_demo_theme() {
+  return array(
+    'jag_demo' => array(
+      'template' => 'templates/jag_demo',
+    ),
+  );
+}
+
+/**
+ * Demo page.
+ */
+function _jag_demo_page() {
+  jag_load_js_css();
+  return theme('jag_demo');
+}

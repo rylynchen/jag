@@ -1,0 +1,1 @@
+A drupal jquery ad-gallery module.

@@ -1,0 +1,6 @@
+name = Jag
+description = Jquery ad-gallery module.
+package = Other
+core = 7.x
+
+configure = admin/config/user-interface/jag

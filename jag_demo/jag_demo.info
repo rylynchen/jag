@@ -1,0 +1,6 @@
+name = Jag Demo
+description = Jquery ad-gallery demo module.
+package = Other
+core = 7.x
+
+dependencies[] = jag

@@ -1,0 +1,96 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ */
+function jag_menu() {
+  $items = array();
+  $items['admin/config/user-interface/jag'] = array(
+    'title' => 'Jag',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('jag_settings_form'),
+    'access arguments' => array('administer jag'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'jag.admin.inc',
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function jag_permission() {
+  return array(
+    'administer jag' => array(
+      'title' => t('Administer Jag'),
+      'description' => t('Administer jag.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_theme().
+ */
+function jag_theme() {
+  return array(
+    'jag' => array(
+      'variables' => array('imgs' => array(), 'min_style' => NULL, 'show_style' => NULL),
+      'template' => 'templates/jag',
+    ),
+    'jag_customize' => array(
+      'variables' => array('imgs' => array()),
+      'template' => 'templates/jag_customize',
+    ),
+  );
+}
+
+/**
+ * Load js, css.
+ */
+function jag_load_js_css() {
+  $path = drupal_get_path('module', 'jag');
+  $settings = array(
+    'jag' => array(
+      'lib_path' => '/'.$path.'/lib/',
+      'auto_play_start_label' => variable_get('jag_auto_play_start_label', '自动播放'),
+      'auto_play_end_label' => variable_get('jag_auto_play_end_label', '停止播放'),
+      'auto_play_speed' => variable_get('jag_auto_play_speed', 5000),
+    )
+  );
+  drupal_add_js($settings, 'setting');
+  drupal_add_css($path.'/lib/jquery.ad-gallery.css');
+  drupal_add_css($path.'/css/jag.css');
+  drupal_add_js($path.'/lib/jquery.ad-gallery.js');
+  drupal_add_js($path.'/js/jag.js', array('scope' => 'footer', 'weight' => 5));
+}
+
+/**
+ * Render.
+ *
+ * @param $imgs
+ *
+ * @param $styles
+ *
+ * @return html
+ */
+function jag_render($imgs, $styles = array()) {
+  jag_load_js_css();
+  $param = array();
+  $min_style = isset($styles['min']) ? $styles['min'] : variable_get('jag_style_min', '');
+  $show_style = isset($styles['show']) ? $styles['show'] : variable_get('jag_style_show', '');
+  return theme('jag', array('imgs' => $imgs, 'min_style' => $min_style, 'show_style' => $show_style));
+}
+
+/**
+ * Render.
+ *
+ * @param $imgs
+ *
+ * @param $styles
+ *
+ * @return html
+ */
+function jag_customize_render($imgs) {
+  jag_load_js_css();
+  return theme('jag_customize', array('imgs' => $imgs));
+}

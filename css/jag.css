@@ -1,0 +1,55 @@
+.ad-gallery * {
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Verdana, Arial, sans-serif;
+  color: #333;
+  line-height: 140%;
+}
+.ad-gallery select, .ad-gallery input, .ad-gallery textarea {
+  font-size: 1em;
+}
+.ad-gallery h2 {
+  margin-top: 1.2em;
+  margin-bottom: 0;
+  padding: 0;
+  border-bottom: 1px dotted #dedede;
+}
+.ad-gallery h3 {
+  margin-top: 1.2em;
+  margin-bottom: 0;
+  padding: 0;
+}
+.ad-gallery .example {
+  border: 1px solid #CCC;
+  background: #f2f2f2;
+  padding: 10px;
+}
+.ad-gallery pre {
+  font-family: "Lucida Console", "Courier New", Verdana;
+  border: 1px solid #CCC;
+  background: #f2f2f2;
+  padding: 10px;
+}
+.ad-gallery code {
+  font-family: "Lucida Console", "Courier New", Verdana;
+  margin: 0;
+  padding: 0;
+}
+
+#gallery {
+  padding: 30px;
+  /*background: #e1eef5;*/
+}
+#descriptions {
+  position: relative;
+  height: 50px;
+  background: #EEE;
+  margin-top: 10px;
+  width: 640px;
+  padding: 10px;
+  overflow: hidden;
+}
+#descriptions .ad-image-description {
+  position: absolute;
+}
+#descriptions .ad-image-description .ad-description-title {
+  display: block;
+}
